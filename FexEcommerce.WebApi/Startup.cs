@@ -33,10 +33,9 @@ namespace FexEcommerce.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(Startup));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             //services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
             //    .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
-            //services.AddControllers();
+            services.AddControllers();
 
             string mysqlConnection = Configuration.GetConnectionString("FlexEcommenrce");
             services.AddDbContext<FlexEcommerceContext>(options =>
@@ -45,6 +44,7 @@ namespace FexEcommerce.WebApi
 
             //Repositorios
             services.AddScoped<IUserRepositories, UserRepositories>();
+            services.AddScoped<ICityReposirories, CityRepositories>();
 
             services.AddCors(opctions =>
             {
@@ -70,20 +70,18 @@ namespace FexEcommerce.WebApi
 
             app.UseCors("CorsPolicy");
             app.UseHttpsRedirection();
-            app.UseMvc();
+        
 
 
-
-
-            //app.UseRouting();
+            app.UseRouting();
 
             //app.UseAuthentication();
             //app.UseAuthorization();
 
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllers();
-            //});
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

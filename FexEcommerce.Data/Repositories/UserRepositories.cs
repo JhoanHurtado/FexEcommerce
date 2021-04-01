@@ -25,7 +25,7 @@ namespace FexEcommerce.Data.Repositories
 
         public async Task<List<User>> GetUsersAsync()
         {
-            return await _dbContext.Users.Include(u => u.City).ToListAsync();
+            return await _dbContext.Users.Include(u => u.City).Include(u => u.Department).ToListAsync();
         }
 
         public async Task<User> SaveUserAsync(User user)

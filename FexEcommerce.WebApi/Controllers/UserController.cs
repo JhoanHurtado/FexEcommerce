@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FexEcommerce.Data;
 using FexEcommerce.Data.Interfaces;
+using FexEcommerce.Data.Repositories;
 using FexEcommerce.Dtos;
 using FexEcommerce.Models;
 using Microsoft.AspNetCore.Http;
@@ -20,10 +21,13 @@ namespace FexEcommerce.WebApi.Controllers
         private IUserRepositories _userRepositories;
         private readonly IMapper _mapper;
         
-        public UserController(FlexEcommerceContext context)
+        public UserController(IUserRepositories userRepositories, IMapper mapper)
         {
-            _context = context;
+            _userRepositories = userRepositories;
+            _mapper = mapper;
+
         }
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
