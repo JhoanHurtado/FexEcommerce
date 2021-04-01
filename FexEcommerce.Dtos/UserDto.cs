@@ -14,7 +14,8 @@ namespace FexEcommerce.Dtos
         public string PictureProfile { get; set; }
         public string contact { get; set; }
         public string OpcionalContact { get; set; }
-        public bool Terified { get; set; } // i must remember to rename this attribute to verified
+        // i must remember to rename this attribute to verified
+        public bool Terified { get; set; } 
         public CityDto City { get; set; }
         public DepartamentDto Department { get; set; }        
     }
