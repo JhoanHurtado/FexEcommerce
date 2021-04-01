@@ -1,2 +1,2 @@
 # FexEcommerce
-Api para Ecommerce en netcore 3.1
+Api para Ecommerce en net core 3.1
